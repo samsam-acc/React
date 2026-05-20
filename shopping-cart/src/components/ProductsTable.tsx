@@ -3,11 +3,6 @@ import cable from './../assets/cable.jpg';
 import stand from './../assets/stand.jpg';
 import { Product } from './Product';
 
-type Props = {
-    image: string,
-    price: number,
-}
-
 export const ProductsTable = () => {
     return (
         <>

@@ -13,6 +13,7 @@ type Product = {
 
 type Props = {
     product: Product;
+    onQuantityChange: (product: Product, q: number) => void;
 }
 
 export const Product = (props: Props) => {
@@ -28,7 +29,7 @@ export const Product = (props: Props) => {
         <tr>
             <td><img src={props.product.image} alt="${props.product.productName}" width="80" height="80"/></td>
             <td>{props.product.name}</td>
-            <td><Quantity qty1={props.product.quantity} onChange={handleQuantityChange}/></td>
+            <td><Quantity onChange={handleQuantityChange} onQuantityChange={props.onQuantityChange}/></td>
             <td>£{props.product.price}</td>
             <td>£{subtotal}</td>
         </tr>

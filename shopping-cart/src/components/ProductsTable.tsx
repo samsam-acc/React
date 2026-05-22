@@ -3,9 +3,25 @@ import cable from './../assets/cable.jpg';
 import stand from './../assets/stand.jpg';
 import { Product } from './Product';
 import { BasketTotal } from './BasketTotal';
+import { useState } from 'react';
+
+type Product = {
+    id: number;
+    image: string;
+    name: string;
+    quantity: number;
+    price: number;
+    lineTotal: number;
+}
 
 export const ProductsTable = () => {
-    const products = [
+    const updateQuantity = (product: Product, q: number) => {
+        product.quantity = q
+    }
+
+    
+
+    const [products, setProducts] = useState([
         {
             id: 0,
             image: wireless,
@@ -30,9 +46,10 @@ export const ProductsTable = () => {
             price: 34.99,
             lineTotal: 0,
         }
-    ]
-    let id = 0;
+    ]);
 
+    let id = 0;
+    
     return (
         <>
             <table>
@@ -44,9 +61,9 @@ export const ProductsTable = () => {
                         <th>Unit Price</th>
                         <th>Line Total</th>
                     </tr>
-                    <Product product={products[id++]} />
-                    <Product product={products[id++]} />
-                    <Product product={products[id++]} />
+                    <Product product={products[id++]} onQuantityChange={updateQuantity} />
+                    <Product product={products[id++]} onQuantityChange={updateQuantity}/>
+                    <Product product={products[id++]} onQuantityChange={updateQuantity}/>
                 </tbody>
             </table>
             <BasketTotal />

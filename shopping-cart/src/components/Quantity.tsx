@@ -1,10 +1,12 @@
 import { useState } from "react";
 
+
 type QuantityProps = {
+    qty1: number;
     onChange: (qty: number) => void;
 };
 
-export const Quantity = ({ onChange }: QuantityProps) => {
+export const Quantity = ( {qty1, onChange }: QuantityProps) => {
     const [qty, setQty] = useState(0);
     const increaseQty = () => {
         const newQty = qty + 1;

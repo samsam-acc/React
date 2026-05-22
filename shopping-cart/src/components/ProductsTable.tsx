@@ -5,6 +5,34 @@ import { Product } from './Product';
 import { BasketTotal } from './BasketTotal';
 
 export const ProductsTable = () => {
+    const products = [
+        {
+            id: 0,
+            image: wireless,
+            name: "Wireless Headphones",
+            quantity: 0,
+            price: 49.99,
+            lineTotal: 0,
+        },
+        {
+            id: 1,
+            image: cable,
+            name: "USB-C Charging Cable",
+            quantity: 0,
+            price: 9.99,
+            lineTotal: 0,
+        },
+        {
+            id: 2,
+            image: stand,
+            name: "Laptop Stand (Adjustable)",
+            quantity: 0,
+            price: 34.99,
+            lineTotal: 0,
+        }
+    ]
+    let id = 0;
+
     return (
         <>
             <table>
@@ -16,9 +44,9 @@ export const ProductsTable = () => {
                         <th>Unit Price</th>
                         <th>Line Total</th>
                     </tr>
-                    <Product image={wireless} price={49.99}/>
-                    <Product image={cable} price={9.99}/>
-                    <Product image={stand} price={34.99}/>
+                    <Product product={products[id++]} />
+                    <Product product={products[id++]} />
+                    <Product product={products[id++]} />
                 </tbody>
             </table>
             <BasketTotal />

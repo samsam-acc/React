@@ -1,3 +1,4 @@
+import { on } from "events";
 import { useState } from "react";
 
 type Product = {
@@ -11,32 +12,36 @@ type Product = {
 };
 
 type QuantityProps = {
+    product: Product;
     onChange: (qty: number) => void;
     onQuantityChange: (product: Product, q: number) => void;
 };
 
-export const Quantity = ( { onChange, onQuantityChange }: QuantityProps) => {
-    const [qty, setQty] = useState(0);
+export const Quantity = ( {product, onChange, onQuantityChange }: QuantityProps) => {
+    // const [qty, setQty] = useState(0);
     const increaseQty = () => {
-        const newQty = qty + 1;
-        setQty(newQty);
-        onChange(newQty);
+        const newQty = product.quantity + 1;
+        // setQty(newQty);
+        // onChange(newQty);
+        onQuantityChange(product, newQty)
     };
 
     const decreaseQty = () => {
-        const newQty = qty - 1;
-        setQty(newQty);
-        onChange(newQty);
-        if(qty <= 0){
-            setQty(0);
-            onChange(0);
+        const newQty = product.quantity +- 1;
+        // setQty(newQty);
+        // onChange(newQty);
+        onQuantityChange(product, newQty)
+        if(product.quantity <= 0){
+            // setQty(0);
+            // onChange(0);
+            onQuantityChange(product, 0)
         }
     };
 
     return (
         <>
             <button onClick={increaseQty}>+</button>
-            <span> { qty } </span>
+            <span> { product.quantity } </span>
             <button onClick={decreaseQty}>-</button>
         </>
         

@@ -17,6 +17,15 @@ type Product = {
 export const ProductsTable = () => {
     const updateQuantity = (product: Product, q: number) => {
         product.quantity = q
+        const newP = products.map(p => {
+            if(p.id === product.id){
+                return product
+            }
+            else{
+                return p
+            }
+        })
+        setProducts(newP);
     }
 
     
@@ -49,6 +58,7 @@ export const ProductsTable = () => {
     ]);
 
     let id = 0;
+    // updateQuantity(products[id],3)
     
     return (
         <>

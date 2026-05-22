@@ -29,7 +29,7 @@ export const Product = (props: Props) => {
         <tr>
             <td><img src={props.product.image} alt="${props.product.productName}" width="80" height="80"/></td>
             <td>{props.product.name}</td>
-            <td><Quantity onChange={handleQuantityChange} onQuantityChange={props.onQuantityChange}/></td>
+            <td><Quantity product={props.product} onChange={handleQuantityChange} onQuantityChange={props.onQuantityChange}/></td>
             <td>£{props.product.price}</td>
             <td>£{subtotal}</td>
         </tr>

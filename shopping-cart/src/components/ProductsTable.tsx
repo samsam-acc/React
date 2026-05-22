@@ -2,6 +2,7 @@ import wireless from './../assets/wireless.jpg';
 import cable from './../assets/cable.jpg';
 import stand from './../assets/stand.jpg';
 import { Product } from './Product';
+import { BasketTotal } from './BasketTotal';
 
 export const ProductsTable = () => {
     return (
@@ -20,6 +21,7 @@ export const ProductsTable = () => {
                     <Product image={stand} price={34.99}/>
                 </tbody>
             </table>
+            <BasketTotal />
         </>
     )
 }

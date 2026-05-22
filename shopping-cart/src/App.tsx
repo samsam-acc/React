@@ -1,9 +1,9 @@
-import { Basket } from './components/Basket';
+import { ProductsTable } from './components/ProductsTable';
 
 function App() {
   return (
     <div className="App">
-      <Basket />
+      <ProductsTable />
     </div>
   );
 }

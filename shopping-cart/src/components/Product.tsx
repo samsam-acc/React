@@ -15,15 +15,15 @@ type Props = {
     onQuantityChange: (product: Product, q: number) => void;
 }
 
-export const Product = (props: Props) => {
+export const Product = ({product, onQuantityChange}: Props) => {
 
     return (
         <tr>
-            <td><img src={props.product.image} alt="${props.product.productName}" width="80" height="80"/></td>
-            <td>{props.product.name}</td>
-            <td><Quantity product={props.product} onQuantityChange={props.onQuantityChange}/></td>
-            <td>£{props.product.price}</td>
-            <td>£{(props.product.lineTotal).toFixed(2)}</td>
+            <td><img src={product.image} alt="${props.product.productName}" width="80" height="80"/></td>
+            <td>{product.name}</td>
+            <td><Quantity product={product} onQuantityChange={onQuantityChange}/></td>
+            <td>£{product.price}</td>
+            <td>£{(product.lineTotal).toFixed(2)}</td>
         </tr>
     )
 }

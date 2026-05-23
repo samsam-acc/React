@@ -17,21 +17,14 @@ type Props = {
 }
 
 export const Product = (props: Props) => {
-    const [quantity, setQuantity] = useState(0);
-
-    const handleQuantityChange = (qty: number) => {
-        setQuantity(qty); 
-    };
-
-    let subtotal = (quantity * props.product.price).toFixed(2);
 
     return (
         <tr>
             <td><img src={props.product.image} alt="${props.product.productName}" width="80" height="80"/></td>
             <td>{props.product.name}</td>
-            <td><Quantity product={props.product} onChange={handleQuantityChange} onQuantityChange={props.onQuantityChange}/></td>
+            <td><Quantity product={props.product} onQuantityChange={props.onQuantityChange}/></td>
             <td>£{props.product.price}</td>
-            <td>£{subtotal}</td>
+            <td>£100</td>
         </tr>
     )
 }

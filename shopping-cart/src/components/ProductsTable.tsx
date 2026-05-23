@@ -28,7 +28,18 @@ export const ProductsTable = () => {
         setProducts(newP);
     }
 
-    
+    const updateLinetotal = (product: Product, l: number) => {
+        product.lineTotal = l
+        const newP = products.map(p => {
+            if(p.id === product.id){
+                return product
+            }
+            else{
+                return p
+            }
+        })
+        setProducts(newP);
+    }
 
     const [products, setProducts] = useState([
         {
@@ -58,7 +69,6 @@ export const ProductsTable = () => {
     ]);
 
     let id = 0;
-    // updateQuantity(products[id],3)
     
     return (
         <>

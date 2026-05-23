@@ -13,27 +13,19 @@ type Product = {
 
 type QuantityProps = {
     product: Product;
-    onChange: (qty: number) => void;
     onQuantityChange: (product: Product, q: number) => void;
 };
 
-export const Quantity = ( {product, onChange, onQuantityChange }: QuantityProps) => {
-    // const [qty, setQty] = useState(0);
+export const Quantity = ( {product, onQuantityChange }: QuantityProps) => {
     const increaseQty = () => {
         const newQty = product.quantity + 1;
-        // setQty(newQty);
-        // onChange(newQty);
         onQuantityChange(product, newQty)
     };
 
     const decreaseQty = () => {
         const newQty = product.quantity +- 1;
-        // setQty(newQty);
-        // onChange(newQty);
         onQuantityChange(product, newQty)
         if(product.quantity <= 0){
-            // setQty(0);
-            // onChange(0);
             onQuantityChange(product, 0)
         }
     };

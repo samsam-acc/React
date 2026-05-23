@@ -16,26 +16,14 @@ type Product = {
 
 export const ProductsTable = () => {
     const updateQuantity = (product: Product, q: number) => {
-        product.quantity = q
+        product.quantity = q;
+        product.lineTotal = q * product.price;
         const newP = products.map(p => {
             if(p.id === product.id){
-                return product
+                return product;
             }
             else{
-                return p
-            }
-        })
-        setProducts(newP);
-    }
-
-    const updateLinetotal = (product: Product, l: number) => {
-        product.lineTotal = l
-        const newP = products.map(p => {
-            if(p.id === product.id){
-                return product
-            }
-            else{
-                return p
+                return p;
             }
         })
         setProducts(newP);
@@ -82,8 +70,8 @@ export const ProductsTable = () => {
                         <th>Line Total</th>
                     </tr>
                     <Product product={products[id++]} onQuantityChange={updateQuantity} />
-                    <Product product={products[id++]} onQuantityChange={updateQuantity}/>
-                    <Product product={products[id++]} onQuantityChange={updateQuantity}/>
+                    <Product product={products[id++]} onQuantityChange={updateQuantity} />
+                    <Product product={products[id++]} onQuantityChange={updateQuantity} />
                 </tbody>
             </table>
             <BasketTotal />

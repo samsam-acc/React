@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import { Quantity } from './Quantity';
 
 type Product = {
@@ -24,7 +23,7 @@ export const Product = (props: Props) => {
             <td>{props.product.name}</td>
             <td><Quantity product={props.product} onQuantityChange={props.onQuantityChange}/></td>
             <td>£{props.product.price}</td>
-            <td>£100</td>
+            <td>£{(props.product.lineTotal).toFixed(2)}</td>
         </tr>
     )
 }

@@ -1,6 +1,3 @@
-import { on } from "events";
-import { useState } from "react";
-
 type Product = {
     id: number,
     image: string,

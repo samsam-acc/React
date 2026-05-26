@@ -96,6 +96,7 @@ export const ProductsTable = () => {
                 </tbody>
             </table>
             <BasketTotal summary={summary}/>
+            <button>Proceed to Checkout</button>
         </>
     )
 }

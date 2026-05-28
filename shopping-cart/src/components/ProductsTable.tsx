@@ -4,6 +4,7 @@ import stand from './../assets/stand.jpg';
 import { Product } from './Product';
 import { BasketTotal } from './BasketTotal';
 import { useState } from 'react';
+import { Receipt } from './Receipt'
 
 
 type Product = {
@@ -104,6 +105,8 @@ export const ProductsTable = () => {
             <BasketTotal summary={summary}/>
             <hr />
             <button>Proceed to Checkout</button>
+
+            <Receipt />
         </div>
     )
 }

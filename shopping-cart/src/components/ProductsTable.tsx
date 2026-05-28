@@ -3,7 +3,8 @@ import cable from './../assets/cable.jpg';
 import stand from './../assets/stand.jpg';
 import { Product } from './Product';
 import { BasketTotal } from './BasketTotal';
-import { use, useState } from 'react';
+import { useState } from 'react';
+
 
 type Product = {
     id: number;
@@ -35,7 +36,9 @@ export const ProductsTable = () => {
         for(const p of products){
             s += p.lineTotal;
         }
-        t = s + summary.shipping;
+        if(s>0){
+            t = s + summary.shipping;
+        }
         const sum = {
             subtotal: s,
             shipping: summary.shipping,
@@ -80,7 +83,9 @@ export const ProductsTable = () => {
     let id = 0;
     
     return (
-        <>
+        <div className='basket' >
+            <strong>Shopping Basket</strong>
+            <hr />
             <table>
                 <tbody>
                     <tr>
@@ -95,8 +100,10 @@ export const ProductsTable = () => {
                     <Product product={products[id++]} onQuantityChange={updateQuantity} />
                 </tbody>
             </table>
+            <hr />
             <BasketTotal summary={summary}/>
+            <hr />
             <button>Proceed to Checkout</button>
-        </>
+        </div>
     )
 }

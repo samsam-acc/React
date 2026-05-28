@@ -28,11 +28,11 @@ export const Quantity = ( {product, onQuantityChange }: QuantityProps) => {
     };
 
     return (
-        <>
-            <button onClick={increaseQty}>+</button>
+        <div className="boxed">
+            <button className="unstyled-btn" onClick={increaseQty}>+]</button>
             <span> { product.quantity } </span>
-            <button onClick={decreaseQty}>-</button>
-        </>
+            <button className="unstyled-btn" onClick={decreaseQty}>[-</button>
+        </div>
         
     )
 }

@@ -1,27 +1,29 @@
-import { useState } from 'react';
 import { Quantity } from './Quantity';
 
-type Props = {
+type Product = {
+    id: number,
     image: string,
+    name: string,
+    quantity: number,
     price: number,
+    lineTotal: number,
+
 };
 
-export const Product = (props: Props) => {
-    const [quantity, setQuantity] = useState(0);
+type Props = {
+    product: Product;
+    onQuantityChange: (product: Product, q: number) => void;
+}
 
-    const handleQuantityChange = (qty: number) => {
-        setQuantity(qty); 
-    };
-
-    let subtotal = (quantity * props.price).toFixed(2);
+export const Product = ({product, onQuantityChange}: Props) => {
 
     return (
         <tr>
-            <td><img src={props.image} alt="wireless headphones" width="80" height="80"/></td>
-            <td>Wireless Headphones</td>
-            <td><Quantity onChange={handleQuantityChange}/></td>
-            <td>£{props.price}</td>
-            <td>£{subtotal}</td>
+            <td><img src={product.image} alt="${props.product.productName}" width="80" height="80"/></td>
+            <td>{product.name}</td>
+            <td><Quantity product={product} onQuantityChange={onQuantityChange}/></td>
+            <td>£{product.price}</td>
+            <td>£{(product.lineTotal).toFixed(2)}</td>
         </tr>
     )
 }

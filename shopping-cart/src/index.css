@@ -1,4 +1,4 @@
-body {
+/* body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
@@ -10,4 +10,41 @@ body {
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+} */
+table, th, td {
+  border: 2px solid #bbb;
+  border-collapse: collapse;
 }
+
+.basket{
+  font-family: Arial, Helvetica, sans-serif;
+  border: 2px solid #bbb;
+  display: inline-block; 
+}
+
+hr {
+  border-top: 3px double #bbb;
+}
+
+.boxed{
+  border: 3px solid #000;
+  border-radius: 8px;
+  padding: 1px 10px;
+}
+
+.unstyled-btn {
+  all: unset;
+  cursor: pointer;
+}
+
+.summary{
+  padding: 0 20px;
+  display: inline-block;
+}
+
+
+.summary hr {
+  width: 100%;
+  border-top: 2px solid #bbb;
+}
+

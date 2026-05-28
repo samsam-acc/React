@@ -12,10 +12,11 @@ type Props = {
 
 export const BasketTotal = ({summary}: Props) => {
     return (
-        <>
-            <p><strong>Subtotal</strong> £{(summary.subtotal).toFixed(2)}</p>
-            <p><strong>Shipping</strong> £{summary.shipping}</p>
-            <p><strong>Total</strong> £{(summary.total).toFixed(2)}</p>
-        </>
+        <div className="summary">
+            <strong>Subtotal</strong> £{(summary.subtotal).toFixed(2)} <br />
+            <strong>Shipping</strong> £{summary.shipping} <br />
+            <hr />
+            <strong>Total</strong> £{(summary.total).toFixed(2)}
+        </div>
     )
 }

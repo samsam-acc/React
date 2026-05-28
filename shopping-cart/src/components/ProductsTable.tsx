@@ -3,7 +3,7 @@ import cable from './../assets/cable.jpg';
 import stand from './../assets/stand.jpg';
 import { Product } from './Product';
 import { BasketTotal } from './BasketTotal';
-import { use, useState } from 'react';
+import { useState } from 'react';
 
 
 type Product = {
@@ -36,7 +36,9 @@ export const ProductsTable = () => {
         for(const p of products){
             s += p.lineTotal;
         }
-        t = s + summary.shipping;
+        if(s>0){
+            t = s + summary.shipping;
+        }
         const sum = {
             subtotal: s,
             shipping: summary.shipping,

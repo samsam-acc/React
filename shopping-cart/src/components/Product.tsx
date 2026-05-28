@@ -22,8 +22,8 @@ export const Product = ({product, onQuantityChange}: Props) => {
             <td><img src={product.image} alt="${props.product.productName}" width="80" height="80" className="boxed" /></td>
             <td>{product.name}</td>
             <td><Quantity product={product} onQuantityChange={onQuantityChange}/></td>
-            <td>£{product.price}</td>
-            <td>£{(product.lineTotal).toFixed(2)}</td>
+            <td>£ {product.price}</td>
+            <td>£ {(product.lineTotal).toFixed(2)}</td>
         </tr>
     )
 }

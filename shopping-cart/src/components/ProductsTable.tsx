@@ -81,30 +81,74 @@ export const ProductsTable = () => {
         total: 0,
     })
 
+    const createOrderNumber = () => {
+        const current = new Date();
+        const random4Digits = Math.floor(1000 + Math.random() * 9000);
+
+        const year = current.getFullYear();
+        const monthN = String(current.getMonth()+1).padStart(2,'0');
+        const day = String(current.getDate()).padStart(2,'0');
+
+        const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+        let month = months[current.getMonth()];
+
+        const date = `${current.getDate()} ${month} ${year}`;
+
+        const dateSection = `${year}${monthN}${day}`
+        const orderNumber = "ORD-" + dateSection + "-" + random4Digits;
+        
+        const order = {
+            orderId: orderNumber,
+            date: date,
+        }
+        return order;
+    }
+
+    const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+        e.preventDefault();
+        const order = createOrderNumber();
+        const checkout = {order, products, summary};
+
+        fetch('https://jsonplaceholder.typicode.com/posts', {
+            method: 'POST',
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(checkout)
+        })
+        .then(res => res.json())
+        .then(data => {
+        console.log('response:', data);
+        });
+
+    }
+
+    
+
     let id = 0;
     
     return (
         <div className='basket' >
             <strong>Shopping Basket</strong>
             <hr />
-            <table>
-                <tbody>
-                    <tr>
-                        <th>Image</th>
-                        <th>Product Name</th>
-                        <th>Qty</th>
-                        <th>Unit Price</th>
-                        <th>Line Total</th>
-                    </tr>
-                    <Product product={products[id++]} onQuantityChange={updateQuantity} />
-                    <Product product={products[id++]} onQuantityChange={updateQuantity} />
-                    <Product product={products[id++]} onQuantityChange={updateQuantity} />
-                </tbody>
-            </table>
-            <hr />
-            <BasketTotal summary={summary}/>
-            <hr />
-            <button>Proceed to Checkout</button>
+            <form onSubmit={handleSubmit}>
+                <table>
+                    <tbody>
+                        <tr>
+                            <th>Image</th>
+                            <th>Product Name</th>
+                            <th>Qty</th>
+                            <th>Unit Price</th>
+                            <th>Line Total</th>
+                        </tr>
+                        <Product product={products[id++]} onQuantityChange={updateQuantity} />
+                        <Product product={products[id++]} onQuantityChange={updateQuantity} />
+                        <Product product={products[id++]} onQuantityChange={updateQuantity} />
+                    </tbody>
+                </table>
+                <hr />
+                <BasketTotal summary={summary}/>
+                <hr />
+                <button type="submit">Proceed to Checkout</button>
+            </form>
 
             <Receipt />
         </div>

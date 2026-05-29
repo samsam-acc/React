@@ -4,8 +4,7 @@ import stand from './../assets/stand.jpg';
 import { Product } from './Product';
 import { BasketTotal } from './BasketTotal';
 import { useState } from 'react';
-import { Receipt } from './Receipt'
-
+import { useNavigate } from 'react-router-dom';
 
 type Product = {
     id: number;
@@ -81,6 +80,8 @@ export const ProductsTable = () => {
         total: 0,
     })
 
+    const navigate = useNavigate();
+
     const createOrderNumber = () => {
         const current = new Date();
         const random4Digits = Math.floor(1000 + Math.random() * 9000);
@@ -118,7 +119,7 @@ export const ProductsTable = () => {
         .then(data => {
         console.log('response:', data);
         });
-
+        navigate("/receipt");
     }
 
     
@@ -149,8 +150,6 @@ export const ProductsTable = () => {
                 <hr />
                 <button type="submit">Proceed to Checkout</button>
             </form>
-
-            <Receipt />
         </div>
     )
 }

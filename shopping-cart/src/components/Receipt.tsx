@@ -2,8 +2,7 @@ import { OrderSummaryItem } from './OrderSummaryItem';
 
 export const Receipt = () => {
     return (
-        <>
-            <hr />
+        <div className='receipt'>
             <div>
                 <strong>Order Confirmation</strong><br />
                 <em>Thank you for your order!</em>
@@ -57,6 +56,6 @@ export const Receipt = () => {
                     </tbody>
                 </table>
             </div>
-        </>
+        </div>
     )
 }

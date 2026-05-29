@@ -3,15 +3,27 @@ import cable from './../assets/cable.jpg';
 import stand from './../assets/stand.jpg';
 import { BasketItem } from './BasketItem';
 import { BasketTotal } from './BasketTotal';
-import { updateProducts, calculateBasketSummary,getOrderDate, createOrderId } from '../helpers/BasketHelpers';
+import { updateProducts, calculateBasketSummary, createOrderNumber, postOrderConfirmation } from '../helpers/BasketHelpers';
 import type { Product } from './BasketItem';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
+type Summary = {
+    subtotal: number,
+    shipping: number,
+    total: number,
+}
+
+type OrderInfo = {
+    orderId: string,
+    date: string,
+}
 
 
-export const getOrderConfirmation = () => {
-
+export type Checkout = {
+    orderInfo: OrderInfo,
+    products: Product[],
+    summary: Summary,
 }
 
 export const Basket = () => {
@@ -58,38 +70,15 @@ export const Basket = () => {
 
     const navigate = useNavigate();
 
-    const createOrderNumber = () => {
-        const current = new Date();
-
-        const date = getOrderDate(current);
-        const orderId = createOrderId(current);
-
-        const order = {
-            orderId: orderId,
-            date: date,
-        }
-        return order;
-    }
-
     const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
-        const order = createOrderNumber();
-        const checkout = {order, products, summary};
+        const orderInfo = createOrderNumber();
+        const checkout:Checkout = {orderInfo, products, summary};
 
-        fetch('https://jsonplaceholder.typicode.com/posts', {
-            method: 'POST',
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify(checkout)
-        })
-        .then(res => res.json())
-        .then(data => {
-        console.log('response:', data);
-        });
+        postOrderConfirmation(checkout);
         navigate("/receipt");
     }
-
     
-
     let id = 0;
     
     return (

@@ -1,3 +1,4 @@
+import { Checkout } from "../components/Basket";
 import { Product } from "../components/BasketItem";
 
 
@@ -56,4 +57,29 @@ export const createOrderId = (date: Date) => {
 
     const dateSection = `${year}${month}${day}`
     return "ORD-" + dateSection + "-" + "0001";
+}
+
+export const createOrderNumber = () => {
+    const current = new Date();
+
+    const date = getOrderDate(current);
+    const orderId = createOrderId(current);
+
+    const orderInfo = {
+        orderId: orderId,
+        date: date,
+    }
+    return orderInfo;
+}
+
+export const postOrderConfirmation = (checkout: Checkout) => {
+    fetch('https://jsonplaceholder.typicode.com/posts', {
+        method: 'POST',
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(checkout)
+    })
+    .then(res => res.json())
+    .then(data => {
+    console.log('response:', data);
+    });
 }

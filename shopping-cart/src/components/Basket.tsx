@@ -1,10 +1,10 @@
 import wireless from './../assets/wireless.jpg';
 import cable from './../assets/cable.jpg';
 import stand from './../assets/stand.jpg';
-import { BasketItem } from './BasketItem';
+import { BasketItem } from './BasketItems';
 import { BasketTotal } from './BasketTotal';
 import { updateProducts, calculateBasketSummary, createOrderNumber, postOrderConfirmation } from '../helpers/BasketHelpers';
-import type { Product } from './BasketItem';
+import type { Product } from './BasketItems';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
@@ -79,27 +79,13 @@ export const Basket = () => {
         navigate("/receipt", { state: { checkoutConfirmation: result } });
     }
 
-    let id = 0;
     
     return (
         <div className='basket' >
             <strong>Shopping Basket</strong>
             <hr />
             <form onSubmit={handleSubmit}>
-                <table>
-                    <tbody>
-                        <tr>
-                            <th>Image</th>
-                            <th>Product Name</th>
-                            <th>Qty</th>
-                            <th>Unit Price</th>
-                            <th>Line Total</th>
-                        </tr>
-                        <BasketItem product={products[id++]} onQuantityChange={updateQuantity} />
-                        <BasketItem product={products[id++]} onQuantityChange={updateQuantity} />
-                        <BasketItem product={products[id++]} onQuantityChange={updateQuantity} />
-                    </tbody>
-                </table>
+                <BasketItem products={products} onQuantityChange={updateQuantity} />
                 <hr />
                 <BasketTotal summary={summary}/>
                 <hr />

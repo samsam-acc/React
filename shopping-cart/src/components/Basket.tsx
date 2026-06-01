@@ -1,10 +1,10 @@
 import wireless from './../assets/wireless.jpg';
 import cable from './../assets/cable.jpg';
 import stand from './../assets/stand.jpg';
-import { BasketItem } from './BasketItem';
+import { BasketItem } from './BasketItems';
 import { BasketTotal } from './BasketTotal';
 import { updateProducts, calculateBasketSummary, createOrderNumber, postOrderConfirmation } from '../helpers/BasketHelpers';
-import type { Product } from './BasketItem';
+import type { Product } from './BasketItems';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 

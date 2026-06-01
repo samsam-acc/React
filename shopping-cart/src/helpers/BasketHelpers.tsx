@@ -72,14 +72,21 @@ export const createOrderNumber = () => {
     return orderInfo;
 }
 
-export const postOrderConfirmation = (checkout: Checkout) => {
-    fetch('https://jsonplaceholder.typicode.com/posts', {
+export const postOrderConfirmation = async (checkout: Checkout) => {
+    return await fetch('https://jsonplaceholder.typicode.com/posts', {
         method: 'POST',
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(checkout)
     })
     .then(res => res.json())
-    .then(data => {
-    console.log('response:', data);
-    });
 }
+
+// export const postOrderConfirmation = async (checkout: Checkout) => {
+//     const res = await fetch('https://jsonplaceholder.typicode.com/posts', {
+//         method: 'POST',
+//         headers: { "Content-Type": "application/json" },
+//         body: JSON.stringify(checkout)
+//     })
+//     return res.json();
+// }
+

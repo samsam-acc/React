@@ -1,6 +1,11 @@
+import { useLocation } from 'react-router-dom';
 import { OrderSummaryItem } from './OrderSummaryItem';
 
 export const Receipt = () => {
+    const location = useLocation();
+    const { checkoutConfirmation } = location.state || {};
+    let id = 0;
+
     return (
         <div className='receipt'>
             <div>
@@ -9,8 +14,8 @@ export const Receipt = () => {
             </div>
             <hr />
             <div>
-                <strong>Order #</strong> ORD-20260505-7842
-                <strong>Date:</strong> 5 May 2026
+                <strong>Order #</strong> { checkoutConfirmation.orderInfo.orderId } <br />
+                <strong>Date:</strong> { checkoutConfirmation.orderInfo.date }
             </div>
             <hr />
             <div>
@@ -32,9 +37,9 @@ export const Receipt = () => {
                             <th>Unit Price</th>
                             <th>Line Total</th>
                         </tr>
-                        <OrderSummaryItem />
-                        <OrderSummaryItem />
-                        <OrderSummaryItem />
+                        <OrderSummaryItem product={ checkoutConfirmation.products[id++] }/>
+                        <OrderSummaryItem product={ checkoutConfirmation.products[id++] }/>
+                        <OrderSummaryItem product={ checkoutConfirmation.products[id++] }/>
                     </tbody>
                 </table>
             </div>
@@ -43,15 +48,15 @@ export const Receipt = () => {
                     <tbody>
                         <tr>
                             <th>Subtotal</th>
-                            <td>£ 0</td>
+                            <td>£ { (checkoutConfirmation.summary.subtotal).toFixed(2) }</td>
                         </tr>
                         <tr>
                             <th>Shipping</th>
-                            <td>£ 4.99</td>
+                            <td>£ { checkoutConfirmation.summary.shipping }</td>
                         </tr>
                         <tr className="total-row">
                             <th>Total</th>
-                            <th>£ 0</th>
+                            <th>£ { (checkoutConfirmation.summary.total).toFixed(2) }</th>
                         </tr>
                     </tbody>
                 </table>

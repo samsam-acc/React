@@ -8,17 +8,16 @@ import type { Product } from './BasketItem';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
-type Summary = {
+export type Summary = {
     subtotal: number,
     shipping: number,
     total: number,
 }
 
-type OrderInfo = {
+export type OrderInfo = {
     orderId: string,
     date: string,
 }
-
 
 export type Checkout = {
     orderInfo: OrderInfo,
@@ -70,15 +69,16 @@ export const Basket = () => {
 
     const navigate = useNavigate();
 
-    const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         const orderInfo = createOrderNumber();
         const checkout:Checkout = {orderInfo, products, summary};
 
-        postOrderConfirmation(checkout);
-        navigate("/receipt");
+        const result = await postOrderConfirmation(checkout);
+
+        navigate("/receipt", { state: { checkoutConfirmation: result } });
     }
-    
+
     let id = 0;
     
     return (

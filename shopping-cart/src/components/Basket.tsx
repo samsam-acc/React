@@ -79,27 +79,13 @@ export const Basket = () => {
         navigate("/receipt", { state: { checkoutConfirmation: result } });
     }
 
-    let id = 0;
     
     return (
         <div className='basket' >
             <strong>Shopping Basket</strong>
             <hr />
             <form onSubmit={handleSubmit}>
-                <table>
-                    <tbody>
-                        <tr>
-                            <th>Image</th>
-                            <th>Product Name</th>
-                            <th>Qty</th>
-                            <th>Unit Price</th>
-                            <th>Line Total</th>
-                        </tr>
-                        <BasketItem product={products[id++]} onQuantityChange={updateQuantity} />
-                        <BasketItem product={products[id++]} onQuantityChange={updateQuantity} />
-                        <BasketItem product={products[id++]} onQuantityChange={updateQuantity} />
-                    </tbody>
-                </table>
+                <BasketItem products={products} onQuantityChange={updateQuantity} />
                 <hr />
                 <BasketTotal summary={summary}/>
                 <hr />

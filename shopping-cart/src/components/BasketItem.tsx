@@ -1,6 +1,6 @@
 import { Quantity } from './Quantity';
 
-type Product = {
+export type Product = {
     id: number,
     image: string,
     name: string,
@@ -15,7 +15,7 @@ type Props = {
     onQuantityChange: (product: Product, q: number) => void;
 }
 
-export const Product = ({product, onQuantityChange}: Props) => {
+export const BasketItem = ({product, onQuantityChange}: Props) => {
 
     return (
         <tr>

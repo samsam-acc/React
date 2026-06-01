@@ -1,7 +1,7 @@
 import wireless from './../assets/wireless.jpg';
 import cable from './../assets/cable.jpg';
 import stand from './../assets/stand.jpg';
-import { BasketItem } from './BasketItems';
+import { BasketItems } from './BasketItems';
 import { BasketTotal } from './BasketTotal';
 import { updateProducts, calculateBasketSummary, createOrderNumber, postOrderConfirmation } from '../helpers/BasketHelpers';
 import type { Product } from './BasketItems';
@@ -85,7 +85,7 @@ export const Basket = () => {
             <strong>Shopping Basket</strong>
             <hr />
             <form onSubmit={handleSubmit}>
-                <BasketItem products={products} onQuantityChange={updateQuantity} />
+                <BasketItems products={products} onQuantityChange={updateQuantity} />
                 <hr />
                 <BasketTotal summary={summary}/>
                 <hr />

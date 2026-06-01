@@ -1,9 +1,14 @@
-import { useLocation } from 'react-router-dom';
+import { Navigate, useLocation } from 'react-router-dom';
 import { OrderSummaryItem } from './OrderSummaryItem';
 
 export const Receipt = () => {
     const location = useLocation();
-    const { checkoutConfirmation } = location.state || {};
+    const checkoutConfirmation = location.state?.checkoutConfirmation;
+    
+    if (!checkoutConfirmation) {
+        return <Navigate to="/" replace />;
+    }
+
     let id = 0;
 
     return (

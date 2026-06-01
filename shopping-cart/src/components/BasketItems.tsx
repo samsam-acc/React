@@ -15,7 +15,7 @@ type Props = {
     onQuantityChange: (product: Product, q: number) => void;
 }
 
-export const BasketItem = ({products, onQuantityChange}: Props) => {
+export const BasketItems = ({products, onQuantityChange}: Props) => {
     return (
         <table>
             <tbody>
@@ -27,8 +27,8 @@ export const BasketItem = ({products, onQuantityChange}: Props) => {
                     <th>Line Total</th>
                 </tr>
                 
-                {products.map((product) => (
-                    <tr>
+                {products.map((product, index) => (
+                    <tr key={index}>
                         <td><img src={product.image} alt="${product.name}" width="80" height="80" className="boxed" /></td>
                         <td>{product.name}</td>
                         <td><Quantity product={product} onQuantityChange={onQuantityChange}/></td>

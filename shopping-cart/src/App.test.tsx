@@ -9,12 +9,10 @@ jest.mock('./assets/stand.jpg', () => 'stand.jpg');
 
 
 jest.mock('./components/Basket', () => ({
-  __esModule: true,
   Basket: () => <div>Basket Page</div>
 }))
 
 jest.mock('./components/Receipt', () => ({
-  __esModule: true,
   Receipt: () => <div>Receipt Page</div>
 }))
 

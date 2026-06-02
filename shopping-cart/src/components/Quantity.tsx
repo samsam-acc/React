@@ -1,12 +1,4 @@
-type Product = {
-    id: number,
-    image: string,
-    name: string,
-    quantity: number,
-    price: number,
-    lineTotal: number,
-
-};
+import { Product } from "../types/Product";
 
 type QuantityProps = {
     product: Product;

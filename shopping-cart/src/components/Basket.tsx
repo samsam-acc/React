@@ -4,26 +4,10 @@ import stand from './../assets/stand.jpg';
 import { BasketTable } from './BasketTable';
 import { BasketTotal } from './BasketTotal';
 import { updateProducts, calculateBasketSummary, createOrderNumber, postOrderConfirmation } from '../helpers/BasketHelpers';
-import type { Product } from './BasketTable';
+import { Product } from '../types/Product';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-
-export type Summary = {
-    subtotal: number,
-    shipping: number,
-    total: number,
-}
-
-export type OrderInfo = {
-    orderId: string,
-    date: string,
-}
-
-export type Checkout = {
-    orderInfo: OrderInfo,
-    products: Product[],
-    summary: Summary,
-}
+import { Checkout } from '../types/Checkout';
 
 export const Basket = () => {
     const updateQuantity = (product: Product, newQuantity: number) => {
@@ -79,7 +63,6 @@ export const Basket = () => {
         navigate("/receipt", { state: { checkoutConfirmation: result } });
     }
 
-    
     return (
         <div className='basket' >
             <strong>Shopping Basket</strong>

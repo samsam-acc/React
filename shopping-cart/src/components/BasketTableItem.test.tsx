@@ -1,5 +1,5 @@
 import { render, screen } from "@testing-library/react";
-import { Product } from "./BasketTable";
+import { Product } from "../types/Product";
 import { BasketTableItem } from "./BasketTableItem";
 
 type Props = {

@@ -1,6 +1,6 @@
 import { render, screen } from "@testing-library/react";
 import { Basket } from "./Basket";
-import { Product } from "./BasketTable";
+import { Product } from "../types/Product";
 
 type Props = {
     products: Product[],

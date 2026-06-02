@@ -1,14 +1,9 @@
-type Summary = {
-    subtotal: number,
-    shipping: number,
-    total: number,
-}
+import { Summary } from "../types/Summary";
+
 
 type Props = {
     summary: Summary;
 }
-
-
 
 export const BasketTotal = ({summary}: Props) => {
     return (

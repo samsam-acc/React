@@ -1,5 +1,5 @@
 import { Quantity } from './Quantity';
-import { Product } from './BasketTable';
+import { Product } from "../types/Product";
 
 
 type Props = {

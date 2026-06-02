@@ -1,15 +1,6 @@
+import { Product } from '../types/Product';
 import { BasketTableHeader } from './BasketTableHeader';
 import { BasketTableItem } from './BasketTableItem';
-
-export type Product = {
-    id: number,
-    image: string,
-    name: string,
-    quantity: number,
-    price: number,
-    lineTotal: number,
-
-};
 
 type Props = {
     products: Product[];

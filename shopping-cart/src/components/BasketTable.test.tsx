@@ -1,6 +1,6 @@
 import { render, screen } from "@testing-library/react";
 import { BasketTable } from "./BasketTable";
-import { Product } from "./BasketTable";
+import { Product } from "../types/Product";
 
 jest.mock('./BasketTableHeader', () => ({
     BasketTableHeader: () => <div>Basket Table Header</div>

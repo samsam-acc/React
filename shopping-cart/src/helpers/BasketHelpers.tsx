@@ -1,5 +1,5 @@
 import { Checkout } from "../components/Basket";
-import { Product } from "../components/BasketItems";
+import { Product } from "../components/BasketTable";
 
 
 export const updateProducts = (products: Product[], newProduct: Product) => {

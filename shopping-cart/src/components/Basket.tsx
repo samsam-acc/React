@@ -1,10 +1,10 @@
 import wireless from './../assets/wireless.jpg';
 import cable from './../assets/cable.jpg';
 import stand from './../assets/stand.jpg';
-import { BasketItem } from './BasketItems';
+import { BasketTable } from './BasketTable';
 import { BasketTotal } from './BasketTotal';
 import { updateProducts, calculateBasketSummary, createOrderNumber, postOrderConfirmation } from '../helpers/BasketHelpers';
-import type { Product } from './BasketItems';
+import type { Product } from './BasketTable';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
@@ -85,7 +85,7 @@ export const Basket = () => {
             <strong>Shopping Basket</strong>
             <hr />
             <form onSubmit={handleSubmit}>
-                <BasketItem products={products} onQuantityChange={updateQuantity} />
+                <BasketTable products={products} onQuantityChange={updateQuantity} />
                 <hr />
                 <BasketTotal summary={summary}/>
                 <hr />

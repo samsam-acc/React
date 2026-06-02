@@ -1,4 +1,4 @@
-import { Product } from "../components/BasketItems";
+import { Product } from "../components/BasketTable";
 import { calculateBasketSummary, calculateSubtotal, calculateTotal, updateProducts, getOrderDate, createOrderId, createOrderNumber, postOrderConfirmation } from "./BasketHelpers";
 
 describe("Update products", () => {

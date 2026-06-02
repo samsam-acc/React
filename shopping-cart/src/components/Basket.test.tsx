@@ -1,9 +1,14 @@
 import { render, screen } from "@testing-library/react";
 import { Basket } from "./Basket";
+import { Product } from "./BasketTable";
+
+type Props = {
+    products: Product[],
+}
 
 jest.mock('./BasketTable', () => ({
-    BasketTable: ({products}: any) => <div data-testId="BasketTable" >
-        {products.map((p, index) => {
+    BasketTable: ({products}: Props) => <div data-testId="BasketTable" >
+        {products.map((p, index) => (
             <div data-testId={`product-${index}`}>
                 <div data-testId={`id-${index}`}>{p.id}</div>
                 <div data-testId={`image-${index}`}>{p.image}</div>
@@ -12,14 +17,16 @@ jest.mock('./BasketTable', () => ({
                 <div data-testId={`price-${index}`}>{p.price}</div>
                 <div data-testId={`lineTotal-${index}`}>{p.lineTotal}</div>
             </div>
-        })}
+    ))}
     </div>
 }))
 
 jest.mock('./BasketTotal', () => ({
-    BasketTotal: () => 
-        <div>
-            <p>Subtotal: </p>
+    BasketTotal: ({summary}: any) => 
+        <div data-testId="BasketTotal">
+            <div data-testId="subtotal">{summary.subtotal}</div>
+            <div data-testId="shipping">{summary.shipping}</div>
+            <div data-testId="total">{summary.total}</div>
         </div>
 }))
 
@@ -42,7 +49,7 @@ describe('Basket component', () => {
         render(<Basket />);
 
         expect(screen.getByTestId("BasketTable")).toBeInTheDocument();
-        [1,2,3].forEach(n => {
+        [0,1,2].forEach(n => {
             expect(screen.getByTestId(`product-${n}`)).toBeInTheDocument();
             expect(screen.getByTestId(`id-${n}`)).toBeInTheDocument();
             expect(screen.getByTestId(`image-${n}`)).toBeInTheDocument();
@@ -53,11 +60,16 @@ describe('Basket component', () => {
         })
     });
 
-    it('', async () => {
-        
+    it('Renders information passed to BasketTotal', async () => {
+        render(<Basket />);
+
+        expect(screen.getByTestId("BasketTotal")).toBeInTheDocument();
+        expect(screen.getByTestId("subtotal")).toHaveTextContent("0");
+        expect(screen.getByTestId("shipping")).toHaveTextContent("4.99");
+        expect(screen.getByTestId("total")).toHaveTextContent("0");
     });
 
-    it('', async () => {
+    it('Button submits form', async () => {
         
     });
 

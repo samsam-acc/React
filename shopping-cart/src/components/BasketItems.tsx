@@ -33,8 +33,8 @@ export const BasketItems = ({products, onQuantityChange}: Props) => {
                         <td>{product.name}</td>
                         <td><Quantity product={product} onQuantityChange={onQuantityChange}/></td>
                         <td>£ {product.price}</td>
-                    <td>£ {(product.lineTotal).toFixed(2)}</td>
-                </tr>
+                        <td>£ {(product.lineTotal).toFixed(2)}</td>
+                    </tr>
                 ))}
                 
             </tbody>

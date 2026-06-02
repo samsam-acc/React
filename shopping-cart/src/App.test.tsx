@@ -8,15 +8,15 @@ jest.mock('./assets/cable.jpg', () => 'cable.jpg');
 jest.mock('./assets/stand.jpg', () => 'stand.jpg');
 
 
-// jest.mock('./components/Basket', () => ({
-//   __esModule: true,
-//   Basket: () => <div>Basket Page</div>
-// }))
+jest.mock('./components/Basket', () => ({
+  __esModule: true,
+  Basket: () => <div>Basket Page</div>
+}))
 
-// jest.mock('./components/Receipt', () => ({
-//   __esModule: true,
-//   Receipt: () => <div>Receipt Page</div>
-// }))
+jest.mock('./components/Receipt', () => ({
+  __esModule: true,
+  Receipt: () => <div>Receipt Page</div>
+}))
 
 describe('App routing', () => {
   it('Renders Basket on "/" route', async () => {

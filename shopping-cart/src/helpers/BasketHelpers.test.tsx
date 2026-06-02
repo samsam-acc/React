@@ -4,7 +4,7 @@ import { calculateBasketSummary, calculateSubtotal, calculateTotal, updateProduc
 describe("Update products", () => {
     const input:Product[] = [
         {
-            id: 0,
+            id: "0",
             image: "",
             name: "Wireless Headphones",
             quantity: 0,
@@ -12,7 +12,7 @@ describe("Update products", () => {
             lineTotal: 0,
         },
         {
-            id: 1,
+            id: "1",
             image: "",
             name: "USB-C Charging Cable",
             quantity: 0,
@@ -20,7 +20,7 @@ describe("Update products", () => {
             lineTotal: 0,
         },
         {
-            id: 2,
+            id: "2",
             image: "",
             name: "Laptop Stand (Adjustable)",
             quantity: 0,
@@ -29,7 +29,7 @@ describe("Update products", () => {
         }
     ];
     const newProduct = {
-        id: 1,
+        id: "1",
         image: "",
         name: "USB-C Charging Cable",
         quantity: 5,
@@ -41,7 +41,7 @@ describe("Update products", () => {
         
         const output = updateProducts(input, newProduct);
 
-        expect(output.find(p => p.id === 1)?.quantity).toBe(5);
+        expect(output.find(p => p.id === "1")?.quantity).toBe(5);
     });
 
     it('Output array does not delete items', async () => {
@@ -58,7 +58,7 @@ describe("Update products", () => {
 describe("Calculate subtotal", () => {
     const input:Product[] = [
         {
-            id: 0,
+            id: "0",
             image: "",
             name: "Wireless Headphones",
             quantity: 3,
@@ -66,7 +66,7 @@ describe("Calculate subtotal", () => {
             lineTotal: 149.97,
         },
         {
-            id: 1,
+            id: "1",
             image: "",
             name: "USB-C Charging Cable",
             quantity: 4,
@@ -74,7 +74,7 @@ describe("Calculate subtotal", () => {
             lineTotal: 39.96,
         },
         {
-            id: 2,
+            id: "2",
             image: "",
             name: "Laptop Stand (Adjustable)",
             quantity: 4,
@@ -101,7 +101,7 @@ describe("Calculate subtotal", () => {
     it("Handles products with zero lineTotal", () => {
         const zeroInput: Product[] = [
             {
-                id: 3,
+                id: "3",
                 image: "",
                 name: "Test Product",
                 quantity: 0,
@@ -140,7 +140,7 @@ describe("Calculate total", () => {
 describe("Calculate basket summary", () => {
     const input:Product[] = [
         {
-            id: 0,
+            id: "0",
             image: "",
             name: "Wireless Headphones",
             quantity: 3,
@@ -148,7 +148,7 @@ describe("Calculate basket summary", () => {
             lineTotal: 149.97,
         },
         {
-            id: 1,
+            id: "1",
             image: "",
             name: "USB-C Charging Cable",
             quantity: 4,
@@ -156,7 +156,7 @@ describe("Calculate basket summary", () => {
             lineTotal: 39.96,
         },
         {
-            id: 2,
+            id: "2",
             image: "",
             name: "Laptop Stand (Adjustable)",
             quantity: 4,
@@ -229,20 +229,3 @@ describe("Create order ID", () => {
 
 });
 
-// describe("Post order confirmation", () => {
-
-//     it('Creates order ID in correct format', async () => {
-//         const input = new Date(2026, 5, 1);
-//         const output = createOrderId(input);
-
-//         expect(output).toBe("ORD-20260601-0001");
-//     });
-
-//     it('Creates order ID for different dates in correct format', async () => {
-//         const input = new Date(2024, 11, 25);
-//         const output = createOrderId(input);
-
-//         expect(output).toBe("ORD-20241225-0001");
-//     });
-
-// });

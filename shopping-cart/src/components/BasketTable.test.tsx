@@ -35,7 +35,7 @@ jest.mock("react-router-dom", () => ({
 describe('BasketTable component', () => {
     const products:Product[] = [
         {
-            id: 0,
+            id: "0",
             image: "",
             name: "Wireless Headphones",
             quantity: 0,
@@ -43,7 +43,7 @@ describe('BasketTable component', () => {
             lineTotal: 0,
         },
         {
-            id: 1,
+            id: "1",
             image: "",
             name: "USB-C Charging Cable",
             quantity: 0,
@@ -51,7 +51,7 @@ describe('BasketTable component', () => {
             lineTotal: 0,
         },
         {
-            id: 2,
+            id: "2",
             image: "",
             name: "Laptop Stand (Adjustable)",
             quantity: 0,

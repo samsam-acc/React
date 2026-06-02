@@ -14,7 +14,7 @@ const onQuantityChange = jest.fn();
 
 describe('Quantity component', () => {
     const product = {
-        id: 0,
+        id: "0",
         image: "",
         name: "Wireless Headphones",
         quantity: 0,

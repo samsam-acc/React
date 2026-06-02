@@ -20,7 +20,7 @@ export const Basket = () => {
 
     const [products, setProducts] = useState([
         {
-            id: 0,
+            id: "0",
             image: wireless,
             name: "Wireless Headphones",
             quantity: 0,
@@ -28,7 +28,7 @@ export const Basket = () => {
             lineTotal: 0,
         },
         {
-            id: 1,
+            id: "1",
             image: cable,
             name: "USB-C Charging Cable",
             quantity: 0,
@@ -36,7 +36,7 @@ export const Basket = () => {
             lineTotal: 0,
         },
         {
-            id: 2,
+            id: "2",
             image: stand,
             name: "Laptop Stand (Adjustable)",
             quantity: 0,

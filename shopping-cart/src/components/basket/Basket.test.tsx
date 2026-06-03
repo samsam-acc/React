@@ -1,16 +1,14 @@
 import { render, screen } from "@testing-library/react";
 import { Basket } from "./Basket";
-import { Product } from "../types/Product";
-import { BasketProvider } from './../context/BasketProvider';
+import { Product } from "./../../types/Product";
+import { BasketProvider } from './../../context/BasketProvider';
+import { mockProducts } from "../../mocks/mockProducts";
+import { mockSummary } from "../../mocks/mockSummary";
 
-type Props = {
-    products: Product[],
-}
-
-jest.mock('./BasketTable', () => ({
-    BasketTable: ({products}: Props) => <div data-testId="BasketTable" >
-        {products.map((p, index) => (
-            <div data-testId={`product-${index}`}>
+jest.mock('./../BasketTable', () => ({
+    BasketTable: () => <div data-testId="BasketTable" >
+        {mockProducts.map((p, index) => (
+            <div data-testId={`product-${index}`} key={`product-${index}`}>
                 <div data-testId={`id-${index}`}>{p.id}</div>
                 <div data-testId={`image-${index}`}>{p.image.url}</div>
                 <div data-testId={`name-${index}`}>{p.name}</div>
@@ -22,12 +20,13 @@ jest.mock('./BasketTable', () => ({
     </div>
 }))
 
-jest.mock('./BasketTotal', () => ({
-    BasketTotal: ({summary}: any) => 
+
+jest.mock('./../BasketTotal', () => ({
+    BasketTotal: () => 
         <div data-testId="BasketTotal">
-            <div data-testId="subtotal">{summary.subtotal}</div>
-            <div data-testId="shipping">{summary.shipping}</div>
-            <div data-testId="total">{summary.total}</div>
+            <div data-testId="subtotal">{mockSummary.subtotal}</div>
+            <div data-testId="shipping">{mockSummary.shipping}</div>
+            <div data-testId="total">{mockSummary.total}</div>
         </div>
 }))
 

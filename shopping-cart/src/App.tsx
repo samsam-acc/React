@@ -1,4 +1,4 @@
-import { Basket } from './components/Basket';
+import { Basket } from './components/basket/Basket';
 import { Receipt } from './components/Receipt';
 import './index.css';
 import { Route, Routes } from 'react-router-dom';

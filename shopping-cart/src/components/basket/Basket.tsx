@@ -1,15 +1,15 @@
 import wireless from './../assets/wireless.jpg';
 import cable from './../assets/cable.jpg';
 import stand from './../assets/stand.jpg';
-import { BasketTable } from './BasketTable';
-import { BasketTotal } from './BasketTotal';
-import { updateProducts, calculateBasketSummary, createOrderNumber, postOrderConfirmation } from '../helpers/BasketHelpers';
-import { Product } from '../types/Product';
+import { BasketTable } from '../BasketTable';
+import { BasketTotal } from '../BasketTotal';
+import { updateProducts, calculateBasketSummary, createOrderNumber, postOrderConfirmation } from './../../helpers/BasketHelpers';
+import { Product } from './../../types/Product';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { Checkout } from '../types/Checkout';
-import { productsData } from '../data/products';
-import { useBasket } from '../context/BasketProvider';
+import { Checkout } from './../../types/Checkout';
+import { productsData } from './../../data/products';
+import { useBasket } from './../../context/BasketProvider';
 
 export const Basket = () => {
     const { products, summary, updateQuantity } = useBasket();
@@ -31,9 +31,9 @@ export const Basket = () => {
             <strong>Shopping Basket</strong>
             <hr />
             <form onSubmit={handleSubmit}>
-                <BasketTable products={products} onQuantityChange={updateQuantity} />
+                <BasketTable />
                 <hr />
-                <BasketTotal summary={summary}/>
+                <BasketTotal />
                 <hr />
                 <button type="submit">Proceed to Checkout</button>
             </form>

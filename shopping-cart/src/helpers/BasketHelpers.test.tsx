@@ -5,7 +5,11 @@ describe("Update products", () => {
     const input:Product[] = [
         {
             id: "0",
-            image: "",
+            image: {
+                name: "Wireless Headphones",
+                url: "./../assets/wireless.jpg",
+                fileType: "jpg",
+            },
             name: "Wireless Headphones",
             quantity: 0,
             price: 49.99,
@@ -13,7 +17,11 @@ describe("Update products", () => {
         },
         {
             id: "1",
-            image: "",
+            image: {
+                name: "Wireless Headphones",
+                url: "./../assets/wireless.jpg",
+                fileType: "jpg",
+            },
             name: "USB-C Charging Cable",
             quantity: 0,
             price: 9.99,
@@ -21,7 +29,11 @@ describe("Update products", () => {
         },
         {
             id: "2",
-            image: "",
+            image: {
+                name: "Wireless Headphones",
+                url: "./../assets/wireless.jpg",
+                fileType: "jpg",
+            },
             name: "Laptop Stand (Adjustable)",
             quantity: 0,
             price: 34.99,
@@ -30,7 +42,11 @@ describe("Update products", () => {
     ];
     const newProduct = {
         id: "1",
-        image: "",
+        image: {
+                name: "Wireless Headphones",
+                url: "./../assets/wireless.jpg",
+                fileType: "jpg",
+            },
         name: "USB-C Charging Cable",
         quantity: 5,
         price: 9.99,
@@ -59,7 +75,11 @@ describe("Calculate subtotal", () => {
     const input:Product[] = [
         {
             id: "0",
-            image: "",
+            image: {
+                name: "Wireless Headphones",
+                url: "./../assets/wireless.jpg",
+                fileType: "jpg",
+            },
             name: "Wireless Headphones",
             quantity: 3,
             price: 49.99,
@@ -67,7 +87,11 @@ describe("Calculate subtotal", () => {
         },
         {
             id: "1",
-            image: "",
+            image: {
+                name: "Wireless Headphones",
+                url: "./../assets/wireless.jpg",
+                fileType: "jpg",
+            },
             name: "USB-C Charging Cable",
             quantity: 4,
             price: 9.99,
@@ -75,7 +99,11 @@ describe("Calculate subtotal", () => {
         },
         {
             id: "2",
-            image: "",
+            image: {
+                name: "Wireless Headphones",
+                url: "./../assets/wireless.jpg",
+                fileType: "jpg",
+            },
             name: "Laptop Stand (Adjustable)",
             quantity: 4,
             price: 34.99,
@@ -102,7 +130,11 @@ describe("Calculate subtotal", () => {
         const zeroInput: Product[] = [
             {
                 id: "3",
-                image: "",
+                image: {
+                name: "Wireless Headphones",
+                url: "./../assets/wireless.jpg",
+                fileType: "jpg",
+            },
                 name: "Test Product",
                 quantity: 0,
                 price: 10,
@@ -141,7 +173,11 @@ describe("Calculate basket summary", () => {
     const input:Product[] = [
         {
             id: "0",
-            image: "",
+            image: {
+                name: "Wireless Headphones",
+                url: "./../assets/wireless.jpg",
+                fileType: "jpg",
+            },
             name: "Wireless Headphones",
             quantity: 3,
             price: 49.99,
@@ -149,7 +185,11 @@ describe("Calculate basket summary", () => {
         },
         {
             id: "1",
-            image: "",
+            image: {
+                name: "Wireless Headphones",
+                url: "./../assets/wireless.jpg",
+                fileType: "jpg",
+            },
             name: "USB-C Charging Cable",
             quantity: 4,
             price: 9.99,
@@ -157,7 +197,11 @@ describe("Calculate basket summary", () => {
         },
         {
             id: "2",
-            image: "",
+            image: {
+                name: "Wireless Headphones",
+                url: "./../assets/wireless.jpg",
+                fileType: "jpg",
+            },
             name: "Laptop Stand (Adjustable)",
             quantity: 4,
             price: 34.99,

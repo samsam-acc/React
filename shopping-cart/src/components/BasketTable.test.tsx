@@ -14,7 +14,7 @@ jest.mock('./BasketTableItem', () => ({
     BasketTableItem: ({product}: Props) => 
         <div data-testId={`BasketTableItem-${product.id}`}>
             <div data-testId={`id-${product.id}`}>{product.id}</div>
-            <div data-testId={`image-${product.id}`}>{product.image}</div>
+            <div data-testId={`image-${product.id}`}>{product.image.url}</div>
             <div data-testId={`name-${product.id}`}>{product.name}</div>
             <div data-testId={`quantity-${product.id}`}>{product.quantity}</div>
             <div data-testId={`price-${product.id}`}>{product.price}</div>
@@ -36,7 +36,11 @@ describe('BasketTable component', () => {
     const products:Product[] = [
         {
             id: "0",
-            image: "",
+            image: {
+                name: "Wireless Headphones",
+                url: "./../assets/wireless.jpg",
+                fileType: "jpg",
+            },
             name: "Wireless Headphones",
             quantity: 0,
             price: 49.99,
@@ -44,7 +48,11 @@ describe('BasketTable component', () => {
         },
         {
             id: "1",
-            image: "",
+            image: {
+                name: "Wireless Headphones",
+                url: "./../assets/wireless.jpg",
+                fileType: "jpg",
+            },
             name: "USB-C Charging Cable",
             quantity: 0,
             price: 9.99,
@@ -52,7 +60,11 @@ describe('BasketTable component', () => {
         },
         {
             id: "2",
-            image: "",
+            image: {
+                name: "Wireless Headphones",
+                url: "./../assets/wireless.jpg",
+                fileType: "jpg",
+            },
             name: "Laptop Stand (Adjustable)",
             quantity: 0,
             price: 34.99,

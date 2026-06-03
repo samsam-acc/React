@@ -10,7 +10,7 @@ type Props = {
 export const BasketTableItem = ({product, onQuantityChange}: Props) => {
     return (
         <tr key={product.id}>
-            <td><img src={product.image} alt="${product.name}" width="80" height="80" className="boxed" /></td>
+            <td><img src={product.image.url} alt={`${product.image.name}`} width="80" height="80" className="boxed" /></td>
             <td>{product.name}</td>
             <td><Quantity product={product} onQuantityChange={onQuantityChange}/></td>
             <td>£ {product.price}</td>

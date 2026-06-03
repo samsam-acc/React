@@ -8,6 +8,7 @@ import { Product } from '../types/Product';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Checkout } from '../types/Checkout';
+import { productsData } from '../data/products';
 
 export const Basket = () => {
     const updateQuantity = (product: Product, newQuantity: number) => {
@@ -18,32 +19,7 @@ export const Basket = () => {
         setSummary(calculateBasketSummary(products, summary.shipping))
     }
 
-    const [products, setProducts] = useState([
-        {
-            id: "0",
-            image: wireless,
-            name: "Wireless Headphones",
-            quantity: 0,
-            price: 49.99,
-            lineTotal: 0,
-        },
-        {
-            id: "1",
-            image: cable,
-            name: "USB-C Charging Cable",
-            quantity: 0,
-            price: 9.99,
-            lineTotal: 0,
-        },
-        {
-            id: "2",
-            image: stand,
-            name: "Laptop Stand (Adjustable)",
-            quantity: 0,
-            price: 34.99,
-            lineTotal: 0,
-        }
-    ]);
+    const [products, setProducts] = useState(productsData);
 
     const [summary, setSummary] = useState({
         subtotal: 0,

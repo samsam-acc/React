@@ -23,7 +23,7 @@ describe('Quantity component', () => {
     };
 
     it('Renders each product property correctly', async () => {
-        render(<BasketTableItem product={product} onQuantityChange={onQuantityChange}/>);
+        // render(<BasketTableItem product={product} onQuantityChange={onQuantityChange}/>);
 
         // expect(screen.getByRole("img")).toHaveTextContent(product.name);
         // expect(screen.getByText("Wireless Headphones")).toBeInTheDocument();

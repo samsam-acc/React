@@ -1,6 +1,7 @@
 import { render, screen } from "@testing-library/react";
 import { Basket } from "./Basket";
 import { Product } from "../types/Product";
+import { BasketProvider } from './../context/BasketProvider';
 
 type Props = {
     products: Product[],
@@ -39,14 +40,14 @@ jest.mock("react-router-dom", () => ({
 
 describe('Basket component', () => {
     it('Renders header and button', async () => {
-        render(<Basket />);
+        render(<BasketProvider><Basket /></BasketProvider>);
 
         expect(screen.getByText("Shopping Basket")).toBeInTheDocument();
         expect(screen.getByRole("button", { name: /proceed to checkout/i })).toBeInTheDocument();
     });
 
     it('Renders information passed to BasketTable', async () => {
-        render(<Basket />);
+        render(<BasketProvider><Basket /></BasketProvider>);
 
         expect(screen.getByTestId("BasketTable")).toBeInTheDocument();
         [0,1,2].forEach(n => {
@@ -61,7 +62,7 @@ describe('Basket component', () => {
     });
 
     it('Renders information passed to BasketTotal', async () => {
-        render(<Basket />);
+        render(<BasketProvider><Basket /></BasketProvider>);
 
         expect(screen.getByTestId("BasketTotal")).toBeInTheDocument();
         expect(screen.getByTestId("subtotal")).toHaveTextContent("0");

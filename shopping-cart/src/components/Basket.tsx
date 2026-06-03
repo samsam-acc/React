@@ -9,23 +9,10 @@ import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Checkout } from '../types/Checkout';
 import { productsData } from '../data/products';
+import { useBasket } from '../context/BasketProvider';
 
 export const Basket = () => {
-    const updateQuantity = (product: Product, newQuantity: number) => {
-        product.quantity = newQuantity;
-        product.lineTotal = newQuantity * product.price;
-        
-        setProducts(updateProducts(products, product));
-        setSummary(calculateBasketSummary(products, summary.shipping))
-    }
-
-    const [products, setProducts] = useState(productsData);
-
-    const [summary, setSummary] = useState({
-        subtotal: 0,
-        shipping: 4.99,
-        total: 0,
-    })
+    const { products, summary, updateQuantity } = useBasket();
 
     const navigate = useNavigate();
 

@@ -8,7 +8,7 @@ jest.mock('./assets/cable.jpg', () => 'cable.jpg');
 jest.mock('./assets/stand.jpg', () => 'stand.jpg');
 
 
-jest.mock('./components/Basket', () => ({
+jest.mock('./components/basket/Basket', () => ({
   Basket: () => <div>Basket Page</div>
 }))
 

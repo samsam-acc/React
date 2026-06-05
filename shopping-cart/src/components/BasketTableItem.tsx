@@ -1,18 +1,19 @@
 import { Quantity } from './Quantity';
-import { Product } from './BasketTable';
-
+import { useBasket } from "./../context/BasketProvider"
 
 type Props = {
-    product: Product;
-    onQuantityChange: (product: Product, q: number) => void;
+    id: number,
 }
 
-export const BasketTableItem = ({product, onQuantityChange}: Props) => {
+export const BasketTableItem = ({id}: Props) => {
+    const { products } = useBasket();
+    const product = products[id];
+
     return (
         <tr key={product.id}>
-            <td><img src={product.image} alt="${product.name}" width="80" height="80" className="boxed" /></td>
+            <td><img src={product.image.url} alt={`${product.image.name}`} width="80" height="80" className="boxed" /></td>
             <td>{product.name}</td>
-            <td><Quantity product={product} onQuantityChange={onQuantityChange}/></td>
+            <td><Quantity id={id}/></td>
             <td>£ {product.price}</td>
             <td>£ {(product.lineTotal).toFixed(2)}</td>
         </tr>

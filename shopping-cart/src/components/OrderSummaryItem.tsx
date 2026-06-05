@@ -1,4 +1,4 @@
-import { Product } from "./BasketTable"
+import { Product } from "../types/Product"
 type props = {
     product: Product
 }

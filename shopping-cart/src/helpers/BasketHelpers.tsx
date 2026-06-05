@@ -1,5 +1,5 @@
-import { Checkout } from "../components/Basket";
-import { Product } from "../components/BasketTable";
+import { Checkout } from "../types/Checkout";
+import { Product } from "../types/Product";
 
 
 export const updateProducts = (products: Product[], newProduct: Product) => {
@@ -80,13 +80,4 @@ export const postOrderConfirmation = async (checkout: Checkout) => {
     })
     .then(res => res.json())
 }
-
-// export const postOrderConfirmation = async (checkout: Checkout) => {
-//     const res = await fetch('https://jsonplaceholder.typicode.com/posts', {
-//         method: 'POST',
-//         headers: { "Content-Type": "application/json" },
-//         body: JSON.stringify(checkout)
-//     })
-//     return res.json();
-// }
 

@@ -1,28 +1,16 @@
 import { BasketTableHeader } from './BasketTableHeader';
 import { BasketTableItem } from './BasketTableItem';
+import { useBasket } from '../context/BasketProvider';
 
-export type Product = {
-    id: number,
-    image: string,
-    name: string,
-    quantity: number,
-    price: number,
-    lineTotal: number,
+export const BasketTable = () => {
+    const { products } = useBasket();
 
-};
-
-type Props = {
-    products: Product[];
-    onQuantityChange: (product: Product, q: number) => void;
-}
-
-export const BasketTable = ({products, onQuantityChange}: Props) => {
     return (
         <table>
             <BasketTableHeader />
             <tbody>
                 {products.map((product) => (
-                    <BasketTableItem key={product.id} product={product} onQuantityChange={onQuantityChange}/>
+                    <BasketTableItem key={product.id} id={Number(product.id)}/>
                 ))}
             </tbody>
         </table>

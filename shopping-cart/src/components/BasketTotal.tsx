@@ -1,16 +1,10 @@
-type Summary = {
-    subtotal: number,
-    shipping: number,
-    total: number,
-}
-
-type Props = {
-    summary: Summary;
-}
+import { Summary } from "../types/Summary";
+import { useBasket } from '../context/BasketProvider';
 
 
+export const BasketTotal = () => {
+    const { summary } = useBasket();
 
-export const BasketTotal = ({summary}: Props) => {
     return (
         <div>
             <table className="summary">

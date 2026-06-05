@@ -1,17 +1,16 @@
 import { render, screen } from "@testing-library/react";
 import { Basket } from "./Basket";
-import { Product } from "./BasketTable";
+import { Product } from "./../../types/Product";
+import { BasketProvider } from './../../context/BasketProvider';
+import { mockProducts } from "../../mocks/mockProducts";
+import { mockSummary } from "../../mocks/mockSummary";
 
-type Props = {
-    products: Product[],
-}
-
-jest.mock('./BasketTable', () => ({
-    BasketTable: ({products}: Props) => <div data-testId="BasketTable" >
-        {products.map((p, index) => (
-            <div data-testId={`product-${index}`}>
+jest.mock('./../BasketTable', () => ({
+    BasketTable: () => <div data-testId="BasketTable" >
+        {mockProducts.map((p, index) => (
+            <div data-testId={`product-${index}`} key={`product-${index}`}>
                 <div data-testId={`id-${index}`}>{p.id}</div>
-                <div data-testId={`image-${index}`}>{p.image}</div>
+                <div data-testId={`image-${index}`}>{p.image.url}</div>
                 <div data-testId={`name-${index}`}>{p.name}</div>
                 <div data-testId={`quantity-${index}`}>{p.quantity}</div>
                 <div data-testId={`price-${index}`}>{p.price}</div>
@@ -21,12 +20,13 @@ jest.mock('./BasketTable', () => ({
     </div>
 }))
 
-jest.mock('./BasketTotal', () => ({
-    BasketTotal: ({summary}: any) => 
+
+jest.mock('./../BasketTotal', () => ({
+    BasketTotal: () => 
         <div data-testId="BasketTotal">
-            <div data-testId="subtotal">{summary.subtotal}</div>
-            <div data-testId="shipping">{summary.shipping}</div>
-            <div data-testId="total">{summary.total}</div>
+            <div data-testId="subtotal">{mockSummary.subtotal}</div>
+            <div data-testId="shipping">{mockSummary.shipping}</div>
+            <div data-testId="total">{mockSummary.total}</div>
         </div>
 }))
 
@@ -39,14 +39,14 @@ jest.mock("react-router-dom", () => ({
 
 describe('Basket component', () => {
     it('Renders header and button', async () => {
-        render(<Basket />);
+        render(<BasketProvider><Basket /></BasketProvider>);
 
         expect(screen.getByText("Shopping Basket")).toBeInTheDocument();
         expect(screen.getByRole("button", { name: /proceed to checkout/i })).toBeInTheDocument();
     });
 
     it('Renders information passed to BasketTable', async () => {
-        render(<Basket />);
+        render(<BasketProvider><Basket /></BasketProvider>);
 
         expect(screen.getByTestId("BasketTable")).toBeInTheDocument();
         [0,1,2].forEach(n => {
@@ -61,7 +61,7 @@ describe('Basket component', () => {
     });
 
     it('Renders information passed to BasketTotal', async () => {
-        render(<Basket />);
+        render(<BasketProvider><Basket /></BasketProvider>);
 
         expect(screen.getByTestId("BasketTotal")).toBeInTheDocument();
         expect(screen.getByTestId("subtotal")).toHaveTextContent("0");

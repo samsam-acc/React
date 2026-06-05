@@ -1,27 +1,39 @@
-import { Product } from "../components/BasketTable";
+import { Product } from "../types/Product";
 import { calculateBasketSummary, calculateSubtotal, calculateTotal, updateProducts, getOrderDate, createOrderId, createOrderNumber, postOrderConfirmation } from "./BasketHelpers";
 
 describe("Update products", () => {
     const input:Product[] = [
         {
-            id: 0,
-            image: "",
+            id: "0",
+            image: {
+                name: "Wireless Headphones",
+                url: "./../assets/wireless.jpg",
+                fileType: "jpg",
+            },
             name: "Wireless Headphones",
             quantity: 0,
             price: 49.99,
             lineTotal: 0,
         },
         {
-            id: 1,
-            image: "",
+            id: "1",
+            image: {
+                name: "Wireless Headphones",
+                url: "./../assets/wireless.jpg",
+                fileType: "jpg",
+            },
             name: "USB-C Charging Cable",
             quantity: 0,
             price: 9.99,
             lineTotal: 0,
         },
         {
-            id: 2,
-            image: "",
+            id: "2",
+            image: {
+                name: "Wireless Headphones",
+                url: "./../assets/wireless.jpg",
+                fileType: "jpg",
+            },
             name: "Laptop Stand (Adjustable)",
             quantity: 0,
             price: 34.99,
@@ -29,8 +41,12 @@ describe("Update products", () => {
         }
     ];
     const newProduct = {
-        id: 1,
-        image: "",
+        id: "1",
+        image: {
+                name: "Wireless Headphones",
+                url: "./../assets/wireless.jpg",
+                fileType: "jpg",
+            },
         name: "USB-C Charging Cable",
         quantity: 5,
         price: 9.99,
@@ -41,7 +57,7 @@ describe("Update products", () => {
         
         const output = updateProducts(input, newProduct);
 
-        expect(output.find(p => p.id === 1)?.quantity).toBe(5);
+        expect(output.find(p => p.id === "1")?.quantity).toBe(5);
     });
 
     it('Output array does not delete items', async () => {
@@ -58,24 +74,36 @@ describe("Update products", () => {
 describe("Calculate subtotal", () => {
     const input:Product[] = [
         {
-            id: 0,
-            image: "",
+            id: "0",
+            image: {
+                name: "Wireless Headphones",
+                url: "./../assets/wireless.jpg",
+                fileType: "jpg",
+            },
             name: "Wireless Headphones",
             quantity: 3,
             price: 49.99,
             lineTotal: 149.97,
         },
         {
-            id: 1,
-            image: "",
+            id: "1",
+            image: {
+                name: "Wireless Headphones",
+                url: "./../assets/wireless.jpg",
+                fileType: "jpg",
+            },
             name: "USB-C Charging Cable",
             quantity: 4,
             price: 9.99,
             lineTotal: 39.96,
         },
         {
-            id: 2,
-            image: "",
+            id: "2",
+            image: {
+                name: "Wireless Headphones",
+                url: "./../assets/wireless.jpg",
+                fileType: "jpg",
+            },
             name: "Laptop Stand (Adjustable)",
             quantity: 4,
             price: 34.99,
@@ -101,8 +129,12 @@ describe("Calculate subtotal", () => {
     it("Handles products with zero lineTotal", () => {
         const zeroInput: Product[] = [
             {
-                id: 3,
-                image: "",
+                id: "3",
+                image: {
+                name: "Wireless Headphones",
+                url: "./../assets/wireless.jpg",
+                fileType: "jpg",
+            },
                 name: "Test Product",
                 quantity: 0,
                 price: 10,
@@ -140,24 +172,36 @@ describe("Calculate total", () => {
 describe("Calculate basket summary", () => {
     const input:Product[] = [
         {
-            id: 0,
-            image: "",
+            id: "0",
+            image: {
+                name: "Wireless Headphones",
+                url: "./../assets/wireless.jpg",
+                fileType: "jpg",
+            },
             name: "Wireless Headphones",
             quantity: 3,
             price: 49.99,
             lineTotal: 149.97,
         },
         {
-            id: 1,
-            image: "",
+            id: "1",
+            image: {
+                name: "Wireless Headphones",
+                url: "./../assets/wireless.jpg",
+                fileType: "jpg",
+            },
             name: "USB-C Charging Cable",
             quantity: 4,
             price: 9.99,
             lineTotal: 39.96,
         },
         {
-            id: 2,
-            image: "",
+            id: "2",
+            image: {
+                name: "Wireless Headphones",
+                url: "./../assets/wireless.jpg",
+                fileType: "jpg",
+            },
             name: "Laptop Stand (Adjustable)",
             quantity: 4,
             price: 34.99,
@@ -229,20 +273,3 @@ describe("Create order ID", () => {
 
 });
 
-// describe("Post order confirmation", () => {
-
-//     it('Creates order ID in correct format', async () => {
-//         const input = new Date(2026, 5, 1);
-//         const output = createOrderId(input);
-
-//         expect(output).toBe("ORD-20260601-0001");
-//     });
-
-//     it('Creates order ID for different dates in correct format', async () => {
-//         const input = new Date(2024, 11, 25);
-//         const output = createOrderId(input);
-
-//         expect(output).toBe("ORD-20241225-0001");
-//     });
-
-// });

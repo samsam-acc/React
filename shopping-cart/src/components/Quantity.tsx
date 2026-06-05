@@ -1,29 +1,23 @@
-type Product = {
+import { useBasket } from "./../context/BasketProvider"
+
+type Props = {
     id: number,
-    image: string,
-    name: string,
-    quantity: number,
-    price: number,
-    lineTotal: number,
+}
 
-};
+export const Quantity = ({id}: Props) => {
+    const { products, updateQuantity } = useBasket();
+    const product = products[id];
 
-type QuantityProps = {
-    product: Product;
-    onQuantityChange: (product: Product, q: number) => void;
-};
-
-export const Quantity = ( {product, onQuantityChange }: QuantityProps) => {
     const increaseQty = () => {
         const newQty = product.quantity + 1;
-        onQuantityChange(product, newQty)
+        updateQuantity(product, newQty)
     };
 
     const decreaseQty = () => {
         const newQty = product.quantity +- 1;
-        onQuantityChange(product, newQty)
+        updateQuantity(product, newQty)
         if(product.quantity <= 0){
-            onQuantityChange(product, 0)
+            updateQuantity(product, 0)
         }
     };
 
